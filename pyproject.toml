@@ -1,0 +1,21 @@
+[tool.pdm]
+
+[project]
+name = "order-series"
+version = "0.1.0"
+description = "Move arquivos de series para pastas com seus nomes"
+authors = [
+    {name = "Bruno Davi", email = "48166556+brunodavi@users.noreply.github.com"},
+]
+
+dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+test = 'python3 -m unittest -v'
+
+[build-system]
+requires = ["pdm-pep517>=1.0"]
+build-backend = "pdm.pep517.api"
