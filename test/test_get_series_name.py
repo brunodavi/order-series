@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.series import get_series_name
+from src.series_handler import get_series_name
 
 
 NAO_TEM_SERIES = 'Não foi encontrada nenhuma série'
@@ -15,7 +15,7 @@ class TestGetSeriesName(TestCase):
             'Serie1 2.mkv',
             'S1E1_Serie2.mov',
             'Serie2 - S1E1.wmv',
-            'Serie3_ - Episódio 01.avi',
+            'Serie3_ -dgEpisódio 01.avi',
             'Serie3, - Episódio 02.webm',
             'Episódio 03 - Serie3.mp4',
             'Episódio 01 - Uma Boa Serie 4.avi',
