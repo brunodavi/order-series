@@ -3,7 +3,7 @@
 [project]
 name = "order-series"
 version = "0.1.0"
-description = "Move arquivos de series para pastas com seus nomes"
+description = "Move series para pastas com seus nomes"
 authors = [
     {name = "Bruno Davi", email = "48166556+brunodavi@users.noreply.github.com"},
 ]
