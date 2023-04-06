@@ -13,6 +13,9 @@ requires-python = ">=3.11"
 readme = "README.md"
 license = {text = "MIT"}
 
+[project.scripts]
+order-series = "src.main:main"
+
 [tool.pdm.scripts]
 test = 'python3 -m unittest -v'
 

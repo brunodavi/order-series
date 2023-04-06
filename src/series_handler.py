@@ -1,4 +1,5 @@
 from re import sub, IGNORECASE
+from pathlib import Path
 
 
 PATTERNS = [
@@ -14,12 +15,19 @@ LABEL_COUNTER = [
 ]
 
 
+def filter_files_exists(path_list: list[Path]):
+    def path_exists(path: Path):
+        return path.exists()
+
+    path_list_exists = filter(path_exists, path_list)
+    path_list_exists = list(path_list_exists)
+
+    return path_list_exists
+
+
 def get_series_name(videos):
     if not isinstance(videos, list):
         raise ValueError('Não foi passado uma lista')
-
-    if len(videos) == 0:
-        raise ValueError('')
 
     series_names = set()
 
