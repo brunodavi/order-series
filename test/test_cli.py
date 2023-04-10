@@ -1,7 +1,7 @@
 from unittest import TestCase
 from pathlib import Path
 
-from src.cli import get_parser
+from order_series import get_parser
 
 
 class TestCLI(TestCase):

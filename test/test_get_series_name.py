@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.series_handler import get_series_name
+from order_series.series_handler import get_series_name
 
 
 NAO_TEM_SERIES = 'Não foi encontrada nenhuma serie'

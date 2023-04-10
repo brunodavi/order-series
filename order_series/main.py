@@ -1,7 +1,8 @@
 from pathlib import Path
 
-from src.cli import get_parser
-from src.series_handler import (
+from .cli import get_parser
+
+from .series_handler import (
     get_series_name,
     filter_files_exists,
 )

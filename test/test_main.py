@@ -5,7 +5,7 @@ from pathlib import Path
 from contextlib import chdir
 from os import listdir
 
-from src.main import main
+from order_series import main
 
 
 class TestMain(TestCase):

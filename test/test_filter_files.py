@@ -1,7 +1,7 @@
 from unittest import TestCase
 from pathlib import Path
 
-from src.series_handler import filter_files_exists
+from order_series.series_handler import filter_files_exists
 
 
 class TestFilterFilesExists(TestCase):
