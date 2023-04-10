@@ -15,13 +15,15 @@ class TestMain(TestCase):
         self.contexto.__enter__()
 
         self.entrada_de_arquivos = [
+            'serie2 - ep 1.avi',
+            'serie.1 season 2 - ep 1.mp4',
             'serie.1 - ep 1.mp4',
             'serie.1 - ep 2.mp4',
-            'serie.1 - ep 3.mp4',
-            'serie2 - ep 1.avi',
+            'serie.1 season 2 - ep 2.mp4',
             'Episódio 1 - Uma Serie 3.mp4',
             'Episódio 2 - Uma Serie 3.mp4',
             'arquivo.txt',
+            'serie.1 - ep 3.mp4',
         ]
 
         for arquivo_camimho in self.entrada_de_arquivos:
@@ -30,7 +32,9 @@ class TestMain(TestCase):
 
         self.lista_esperada = {
             'serie.1',
+            'serie.1 season 2',
             'Uma Serie 3',
+            'arquivo.txt'
         }
 
     def tearDown(self) -> None:
@@ -43,8 +47,8 @@ class TestMain(TestCase):
 
         lista_de_arquivos = listdir()
 
-        self.assertEqual(
-            lista_de_arquivos,
+        self.assertSetEqual(
+            set(lista_de_arquivos),
             self.lista_esperada,
         )
 
@@ -57,17 +61,28 @@ class TestMain(TestCase):
             'serie.1 - ep 3.mp4',
         ]
 
+        lista_esperada_serie1_season2 = [
+            'serie.1 season 2 - ep 1.mp4',
+            'serie.1 season 2 - ep 2.mp4',
+        ]
+
         lista_esperada_serie3 = [
             'Episódio 1 - Uma Serie 3.mp4',
             'Episódio 2 - Uma Serie 3.mp4',
         ]
 
-        lista_serie1 = listdir('serie.1')
-        lista_serie3 = listdir('Uma Serie 3')
+        lista_serie1 = listdir('serie.1/')
+        lista_serie1_season = listdir('serie.1 season 2/')
+        lista_serie3 = listdir('Uma Serie 3/')
 
         self.assertListEqual(
             lista_serie1,
             lista_esperada_serie1,
+        )
+
+        self.assertListEqual(
+            lista_serie1_season,
+            lista_esperada_serie1_season2,
         )
 
         self.assertListEqual(
