@@ -1,3 +1,4 @@
+from typing import Iterable
 from re import sub, IGNORECASE
 from pathlib import Path
 
@@ -15,7 +16,7 @@ LABEL_COUNTER = [
 ]
 
 
-def filter_files_exists(path_list: list[Path]):
+def filter_files_exists(path_list: list[Path]) -> list[Path]:
     def path_exists(path: Path):
         return path.exists()
 
@@ -25,13 +26,13 @@ def filter_files_exists(path_list: list[Path]):
     return path_list_exists
 
 
-def get_series_name(videos):
-    if not isinstance(videos, list):
+def get_series_name(path_videos: Iterable[str]) -> set[str]:
+    if not isinstance(path_videos, list):
         raise ValueError('Não foi passado uma lista')
 
     series_names = set()
 
-    for video_name in videos:
+    for video_name in path_videos:
         if not isinstance(video_name, str):
             raise ValueError('Valor passado não é uma string')
 
