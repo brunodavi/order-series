@@ -24,4 +24,4 @@ class TestCLI(TestCase):
         args = self.parser.parse_args(entrada)
         resultado = args.video_series
 
-        self.assertEqual(resultado, esperado)
+        self.assertCountEqual(resultado, esperado)

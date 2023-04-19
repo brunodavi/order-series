@@ -40,14 +40,14 @@ class TestMain(TestCase):
             if arquivo_camimho != self.entrada_de_arquivos[0]:
                 Path(arquivo_camimho).touch()
 
-        self.lista_esperada = {
+        self.lista_esperada = [
             'pasta',
             'serie.1',
             'serie.1 season 2',
             'Uma Serie 3',
             'Uma boa serie 4',
             'arquivo.txt'
-        }
+        ]
 
     def tearDown(self) -> None:
         self.contexto.__exit__()
@@ -59,7 +59,7 @@ class TestMain(TestCase):
 
         lista_de_arquivos = listdir()
 
-        self.assertSetEqual(
+        self.assertCountEqual(
             set(lista_de_arquivos),
             self.lista_esperada,
         )
@@ -96,22 +96,22 @@ class TestMain(TestCase):
         lista_serie3 = listdir('Uma Serie 3/')
         lista_serie4 = listdir('Uma boa serie 4/')
 
-        self.assertListEqual(
+        self.assertCountEqual(
             lista_serie1,
             lista_esperada_serie1,
         )
 
-        self.assertListEqual(
+        self.assertCountEqual(
             lista_serie1_season,
             lista_esperada_serie1_season2,
         )
 
-        self.assertListEqual(
+        self.assertCountEqual(
             lista_serie3,
             lista_esperada_serie3,
         )
 
-        self.assertListEqual(
+        self.assertCountEqual(
             lista_serie4,
             lista_esperada_serie4,
         )
