@@ -1,4 +1,6 @@
 from typing import Iterable
+from collections import abc
+
 from re import sub, IGNORECASE
 from pathlib import Path
 
@@ -27,7 +29,7 @@ def filter_files_exists(path_list: Iterable[Path]) -> list[Path]:
 
 
 def get_series_name(path_videos: Iterable[str]) -> set[str]:
-    if not isinstance(path_videos, Iterable):
+    if not isinstance(path_videos, abc.Iterable):
         raise ValueError('Não foi passado uma lista')
 
     series_names = set()
