@@ -14,6 +14,15 @@ class TestMain(TestCase):
         self.contexto = chdir(self.tmp.name)
         self.contexto.__enter__()
 
+        Path('pasta').mkdir()
+
+        self.entrada_de_arquivos_em_pasta = [
+            'pasta/Uma boa serie 4 - Episódio 01.mp4',
+            'pasta/Uma boa serie 4 - Episódio 02.mp4',
+            'pasta/Uma boa serie 4 - Episódio 03.mp4',
+            'pasta/Uma boa serie 4 - Episódio 04.mp4',
+        ]
+
         self.entrada_de_arquivos = [
             'serie2 - ep 1.avi',
             'serie.1 season 2 - ep 1.mp4',
@@ -24,6 +33,7 @@ class TestMain(TestCase):
             'Episódio 2 - Uma Serie 3.mp4',
             'arquivo.txt',
             'serie.1 - ep 3.mp4',
+            *self.entrada_de_arquivos_em_pasta,
         ]
 
         for arquivo_camimho in self.entrada_de_arquivos:
@@ -31,9 +41,11 @@ class TestMain(TestCase):
                 Path(arquivo_camimho).touch()
 
         self.lista_esperada = {
+            'pasta',
             'serie.1',
             'serie.1 season 2',
             'Uma Serie 3',
+            'Uma boa serie 4',
             'arquivo.txt'
         }
 
@@ -71,9 +83,18 @@ class TestMain(TestCase):
             'Episódio 2 - Uma Serie 3.mp4',
         ]
 
+
+        lista_esperada_serie4 = [
+            'Uma boa serie 4 - Episódio 01.mp4',
+            'Uma boa serie 4 - Episódio 02.mp4',
+            'Uma boa serie 4 - Episódio 03.mp4',
+            'Uma boa serie 4 - Episódio 04.mp4',
+        ]
+
         lista_serie1 = listdir('serie.1/')
         lista_serie1_season = listdir('serie.1 season 2/')
         lista_serie3 = listdir('Uma Serie 3/')
+        lista_serie4 = listdir('Uma boa serie 4/')
 
         self.assertListEqual(
             lista_serie1,
@@ -88,4 +109,9 @@ class TestMain(TestCase):
         self.assertListEqual(
             lista_serie3,
             lista_esperada_serie3,
+        )
+
+        self.assertListEqual(
+            lista_serie4,
+            lista_esperada_serie4,
         )
