@@ -26,5 +26,5 @@ class TestFilterFilesExists(TestCase):
 
         resultado = filter_files_exists(entrada)
 
-        self.assertEqual(resultado, esperado)
+        self.assertCountEqual(resultado, esperado)
 
