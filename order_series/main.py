@@ -15,11 +15,12 @@ def main(args = None):
     path_list = args.video_series
     path_list_exists = filter_files_exists(path_list)
 
-    path_list_exists = list(
-        map(str, path_list_exists)
+    series_names_list = get_series_name(
+        map(
+            lambda path: path.name,
+            path_list_exists,
+        )
     )
-
-    series_names_list = get_series_name(path_list_exists)
 
     series_names_list = sorted(
         series_names_list,
@@ -31,11 +32,11 @@ def main(args = None):
         dir_name = Path(serie_name)
         dir_name.mkdir()
 
-        for video_path in Path().iterdir():
-            if not video_path.is_dir():
+        for video_path in path_list_exists:
+            if video_path.exists():
                 if serie_name in video_path.name:
-                    new_path = dir_name / video_path.name
-                    video_path.rename(new_path)
+                        new_path = dir_name / video_path.name
+                        video_path.rename(new_path)
 
 
 if __name__ == "__main__":
