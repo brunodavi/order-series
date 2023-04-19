@@ -16,7 +16,7 @@ LABEL_COUNTER = [
 ]
 
 
-def filter_files_exists(path_list: list[Path]) -> list[Path]:
+def filter_files_exists(path_list: Iterable[Path]) -> list[Path]:
     def path_exists(path: Path):
         return path.exists()
 
@@ -27,7 +27,7 @@ def filter_files_exists(path_list: list[Path]) -> list[Path]:
 
 
 def get_series_name(path_videos: Iterable[str]) -> set[str]:
-    if not isinstance(path_videos, list):
+    if not isinstance(path_videos, Iterable):
         raise ValueError('Não foi passado uma lista')
 
     series_names = set()
