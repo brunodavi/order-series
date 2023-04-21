@@ -60,7 +60,7 @@ class TestGetSeriesName(TestCase):
 
         resultado = get_series_name(entrada)
 
-        self.assertEqual(resultado, esperado)
+        self.assertSetEqual(resultado, esperado)
 
     def test_erro_nao_tem_series_na_lista(self):
         entrada = [
