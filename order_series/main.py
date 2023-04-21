@@ -30,7 +30,7 @@ def main(args = None):
 
     for serie_name in series_names_list:
         dir_name = Path(serie_name)
-        dir_name.mkdir()
+        dir_name.mkdir(exist_ok=True)
 
         for video_path in path_list_exists:
             if video_path.exists():
