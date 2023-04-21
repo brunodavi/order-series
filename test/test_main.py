@@ -10,11 +10,15 @@ from order_series import main
 
 class TestMain(TestCase):
     def setUp(self):
-        self.tmp = TemporaryDirectory(dir='.')
+        self.tmp = TemporaryDirectory()
         self.contexto = chdir(self.tmp.name)
         self.contexto.__enter__()
 
-        Path('pasta').mkdir()
+        self.pastas_extras = [
+            'pasta/',
+            'Uma boa serie 4/',
+            'Uma Serie 3/'
+        ]
 
         self.entrada_de_arquivos_em_pasta = [
             'pasta/Uma boa serie 4 - Episódio 01.mp4',
@@ -36,10 +40,6 @@ class TestMain(TestCase):
             *self.entrada_de_arquivos_em_pasta,
         ]
 
-        for arquivo_camimho in self.entrada_de_arquivos:
-            if arquivo_camimho != self.entrada_de_arquivos[0]:
-                Path(arquivo_camimho).touch()
-
         self.lista_esperada = [
             'pasta',
             'serie.1',
@@ -48,6 +48,13 @@ class TestMain(TestCase):
             'Uma boa serie 4',
             'arquivo.txt'
         ]
+
+        for pasta in self.pastas_extras:
+            Path(pasta).mkdir()
+
+        for arquivo_camimho in self.entrada_de_arquivos:
+            if arquivo_camimho != self.entrada_de_arquivos[0]:
+                Path(arquivo_camimho).touch()
 
     def tearDown(self) -> None:
         self.contexto.__exit__()
