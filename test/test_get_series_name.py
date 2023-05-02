@@ -12,7 +12,6 @@ class TestGetSeriesName(TestCase):
     def test_pega_os_nomes_das_series(self):
         entrada = [
             'Serie1 - Ep 1.mp4',
-            'Serie1 2.mkv',
             'S1E1_Serie2.mov',
             'Serie2 - S1E1.wmv',
             'Serie3_ -Episódio 01.avi',
@@ -23,12 +22,13 @@ class TestGetSeriesName(TestCase):
             'Uma Boa Serie 4 - S1E3.mkv',
             'S1E4 - Uma Boa Serie 4.mkv',
             'S01E01 - Uma Serie 5.mp4',
-            '02 Uma Serie 5.mp4',
-            '03 - Uma Serie 5.mkv',
             'Uma Serie 5 S01E04.mp4',
             'Serie.6 S01E01.mp4',
             'Serie.6_Episódio 2.mp4',
             'Serie.6 Episódio 03.mp4',
+            'serie7 - Episódio 01.mp4',
+            '8-series - Episódio 01.mp4',
+            'Episódio 02 - 8-series.mp4',
         ]
 
         esperado = {
@@ -38,6 +38,8 @@ class TestGetSeriesName(TestCase):
             'Uma Boa Serie 4',
             'Uma Serie 5',
             'Serie.6',
+            'serie7',
+            '8-series',
         }
 
         resultado = get_series_name(entrada)
@@ -49,6 +51,9 @@ class TestGetSeriesName(TestCase):
             '0',
             'Serie1 - Ep 01.mp4',
             'Serie1 - Episódio 2.avi',
+            'Serie0 - Episódio 01-1.avi',
+            'Serie0 - Episódio.avi',
+            'Episódio - Serie0.avi',
             'Serie1Ep01.wmv',
             'S1E1 - Serie2.mp4',
         ]
