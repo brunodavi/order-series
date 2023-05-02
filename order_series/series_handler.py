@@ -14,7 +14,6 @@ LABEL_COUNTER = [
     r'S\d+E\d+',
     r'Episódios? \d+',
     r'Ep \d+',
-    r'\d+'
 ]
 
 
