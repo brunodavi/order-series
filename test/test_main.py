@@ -37,6 +37,9 @@ class TestMain(TestCase):
             'Episódio 2 - Uma Serie 3.mp4',
             'arquivo.txt',
             'serie.1 - ep 3.mp4',
+            '5-serie - Episódio 01.mp4',
+            '5-serie - Episódio 01-1.mp4',
+            '5-serie - Episódio 02.mp4',
             *self.entrada_de_arquivos_em_pasta,
         ]
 
@@ -46,6 +49,7 @@ class TestMain(TestCase):
             'serie.1 season 2',
             'Uma Serie 3',
             'Uma boa serie 4',
+            '5-serie',
             'arquivo.txt'
         ]
 
@@ -98,10 +102,17 @@ class TestMain(TestCase):
             'Uma boa serie 4 - Episódio 04.mp4',
         ]
 
+        lista_esperada_serie5 = [
+            '5-serie - Episódio 01.mp4',
+            '5-serie - Episódio 01-1.mp4',
+            '5-serie - Episódio 02.mp4',
+        ]
+
         lista_serie1 = listdir('serie.1/')
         lista_serie1_season = listdir('serie.1 season 2/')
         lista_serie3 = listdir('Uma Serie 3/')
         lista_serie4 = listdir('Uma boa serie 4/')
+        lista_serie5 = listdir('5-serie/')
 
         self.assertCountEqual(
             lista_serie1,
@@ -121,4 +132,9 @@ class TestMain(TestCase):
         self.assertCountEqual(
             lista_serie4,
             lista_esperada_serie4,
+        )
+
+        self.assertCountEqual(
+            lista_serie5,
+            lista_esperada_serie5,
         )
